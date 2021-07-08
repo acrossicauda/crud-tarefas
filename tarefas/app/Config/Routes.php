@@ -37,29 +37,22 @@ $routes->get('/', 'Home::index');
 // CRUD Routes
 // Tasks
 $routes->get('tarefas', 'Tasks::index');
+$routes->get('tarefas-view', 'Tasks::getTasks');
 $routes->get('nova-tarefa', 'Tasks::create');
 $routes->post('nova-tarefa', 'Tasks::store');
-$routes->get('tarefas/(:num)', 'Tasks::singleUser/$1');
-$routes->post('novo-tarefa/(:num)', 'Tasks::update/$1');
-$routes->get('tarefa-delete/(:num)', 'Tasks::delete/$1');
+$routes->get('tarefa-delete', 'Tasks::delete');
 
 // Categories
 $routes->get('categorias', 'Categories::index');
 $routes->get('nova-categoria', 'Categories::create');
 $routes->post('nova-categoria', 'Categories::store');
-
-$routes->get('nova-categoria/(:num)', 'Categories::singleUser/$1');
-$routes->post('nova-categoria/(:num)', 'Categories::update/$1');
-$routes->get('categoria-delete', 'Categories::delete');
+ $routes->get('categoria-delete', 'Categories::delete');
 
 // Responsibles
 $routes->get('responsaveis', 'Responsibles::index');
 $routes->get('novo-responsavel', 'Responsibles::create');
 $routes->post('novo-responsavel', 'Responsibles::store');
-
-$routes->get('responsaveis/(:num)', 'Responsibles::singleUser/$1');
-$routes->post('novo-responsavel/(:num)', 'Responsibles::update/$1');
-$routes->post('responsavel-delete/(:num)', 'Responsibles::delete/$1');
+$routes->get('responsavel-delete', 'Responsibles::delete');
 
 
 /*

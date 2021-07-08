@@ -42,11 +42,27 @@ class TaskDAO extends Controller
     }
 
     public function getAllTasks($id = null) {
-        $categories = new TasksModel();
+        $taks = new TasksModel();
         if(!$id) {
-            $data = $categories->orderBy('idcategory', 'DESC')->findAll();
+            $data = $taks->orderBy('idtasks', 'DESC')->findAll();
         } else {
-            $data = $categories->orderBy('idcategory', 'DESC')->find($id);
+
+            // $taks->select('t.*, c.*, r.*');
+            // $data2 = $taks->select('*')
+            //     ->from('tasks')
+            //     ->join('category', 'tasks.idcategory = category.idcategory', 'left')
+            //     ->join('responsibles', 'tasks.idresponsible = responsibles.idresponsibles', 'left')
+            //     ->where("tasks.idtasks = $id")
+            //     ->get()->getResult('array'); 
+
+            $query = "SELECT t.*, c.description as cat_description, r.name 
+            FROM tasks t
+            LEFT JOIN category c ON t.idcategory = c.idcategory
+            LEFT JOIN responsibles r ON t.idresponsible = r.idresponsibles
+            WHERE t.idtasks = $id
+            ";
+            $data = $taks->query($query)->getResult('array');
+            
         }
         return (empty($data)) ? [] : $data;
     }

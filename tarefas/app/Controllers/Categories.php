@@ -56,4 +56,11 @@ class Categories extends BaseController
         
         return $this->response->redirect(base_url('categorias'));
     }
+
+    public function delete() {
+        $id = $this->request->getVar('id');
+        $categoriesModel = new CategoriesModel();
+        $ok = $categoriesModel->where("idcategory = $id")->delete();
+        return $this->response->redirect(base_url('categorias'));
+    }
 }

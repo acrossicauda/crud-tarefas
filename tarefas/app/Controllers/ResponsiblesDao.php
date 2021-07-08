@@ -1,20 +1,22 @@
 <?php 
 namespace App\Controllers;
 
+use App\Models;
 use App\Models\ResponsiblesModel;
 use CodeIgniter\Controller;
 
-class ResponsibleDAO extends Controller
+class ResponsibleDao extends Controller
 {
 
     private static $instance;
 
-    private function __construct() {}
+    public function __construct() {}
 
-    private function __clone() {}
+    public function __clone() {}
 
-    private function __wakeup() {}
+    public function __wakeup() {}
 
+    
     // insert data
     public function store($data = array()) {
         $responsibleModel = new ResponsiblesModel();
@@ -48,8 +50,14 @@ class ResponsibleDAO extends Controller
         if(!$id) {
             $data = $responsibleModel->orderBy('idresponsibles', 'DESC')->findAll();
         } else {
-            $data = $responsibleModel->orderBy('idresponsibles', 'DESC')->find($id);
+            //$data = $responsibleModel->orderBy('idresponsibles', 'DESC')->find($id);
+            $query = "SELECT *
+            FROM responsibles
+            WHERE idresponsibles = $id
+            ";
+            $data = $responsibleModel->query($query)->getResult('array');
         }
+
         return (empty($data)) ? [] : $data;
     }
 

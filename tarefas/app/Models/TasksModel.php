@@ -8,5 +8,5 @@ class TasksModel extends Model
 
     protected $primaryKey = 'idtask';
     
-    protected $allowedFields = ['idtask', 'description', 'responsible', 'data_end', 'idcategory'];
+    protected $allowedFields = ['idtask', 'description', 'idresponsible', 'data_end', 'idcategory'];
 }
