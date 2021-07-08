@@ -21,11 +21,11 @@
           <?php if($responsibles): ?>
           <?php foreach($responsibles as $responsible): ?>
           <tr>
-             <td><?php echo $responsible['idresponsible']; ?></td>
-             <td><?php echo $responsible['description']; ?></td>
+             <td><?php echo $responsible['idresponsibles']; ?></td>
+             <td><?php echo $responsible['name']; ?></td>
              <td>
-              <a href="<?php echo base_url('nova-categoria?id='.$responsible['idresponsibles']);?>" class="btn btn-primary btn-sm">Editar</a>
-              <a href="<?php echo base_url('categoria-delete?id='.$responsible['idresponsibles']);?>" class="btn btn-danger btn-sm">Deletar</a>
+              <a href="<?php echo base_url('novo-responsavel?id='.$responsible['idresponsibles']);?>" class="btn btn-primary btn-sm">Editar</a>
+              <a href="<?php echo base_url('responsavel-delete?id='.$responsible['idresponsibles']);?>" class="btn btn-danger btn-sm">Deletar</a>
               </td>
           </tr>
          <?php endforeach; ?>

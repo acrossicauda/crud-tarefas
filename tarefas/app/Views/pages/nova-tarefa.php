@@ -1,6 +1,6 @@
 <div class="container mt-5">
     <form method="post" id="up_or_in_task" name="up_or_in_task" 
-    action="<?= base_url('nova-categoria') ?>">
+    action="<?= base_url('nova-tarefa') ?>">
         <input type="hidden" name="idtask" id="idtask" value="<?php echo $tasks['idtask']; ?>">
 
         <div class="form-group">
@@ -25,7 +25,7 @@
                 <option value=""> -- RESPONSÁVEL -- </option>
                 <?php if(isset($tasks['responsibles']) && !empty($tasks['responsibles'])): ?>
                     <?php foreach($tasks['responsibles'] as $responsible): ?>
-                        <option value="<?= $responsible['idresponsible'] ?>"> <?= $responsible['name'] ?> </option>
+                        <option value="<?= $responsible['idresponsibles'] ?>"> <?= $responsible['name'] ?> </option>
                     <?php endforeach; ?>
                 <?php endif; ?>
             </select>
